@@ -1,0 +1,4 @@
+/nosy
+/dist/
+*.bin
+.env

@@ -1,0 +1,21 @@
+intent: bgp.neighbors
+nos: srl
+nos_version: ">=23.10"
+aliases:
+  - bgp neighbors
+  - show bgp neighbors
+  - bgp peers
+  - bgp sessions
+  - show bgp peers
+paths:
+  - /network-instance[name=*]/protocols/bgp/neighbor[peer-address=*]
+output:
+  schema_version: 1
+  fields:
+    - network_instance
+    - peer_address
+    - peer_as
+    - session_state
+    - last_established
+    - messages_received
+    - messages_sent
