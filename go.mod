@@ -1,4 +1,4 @@
-module github.com/opsxlab/nosy
+module github.com/ritmukhe/nosy
 
 go 1.22
 

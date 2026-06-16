@@ -6,7 +6,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/opsxlab/nosy/pkg/schemapack"
+	"github.com/ritmukhe/nosy/pkg/schemapack"
 )
 
 type contextKey struct{}

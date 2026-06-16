@@ -3,8 +3,8 @@ package main
 import (
 	"os"
 
-	"github.com/opsxlab/nosy/internal/config"
-	"github.com/opsxlab/nosy/internal/schema"
+	"github.com/ritmukhe/nosy/internal/config"
+	"github.com/ritmukhe/nosy/internal/schema"
 	"github.com/spf13/cobra"
 )
 
