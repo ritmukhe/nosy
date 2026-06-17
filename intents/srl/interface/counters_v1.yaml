@@ -1,0 +1,22 @@
+intent: interface.counters
+nos: srl
+nos_version: ">=23.10"
+aliases:
+  - interface counters
+  - show interface counters
+  - interface stats
+  - port statistics
+  - show interfaces counters
+paths:
+  - /interface[name=*]/statistics
+output:
+  schema_version: 1
+  row_key: "interface"
+  fields:
+    - name
+    - in_octets
+    - out_octets
+    - in_packets
+    - out_packets
+    - in_error_packets
+    - out_error_packets

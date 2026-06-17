@@ -1,0 +1,30 @@
+# nosy demo target profiles — the 2-spine / 2-leaf SR Linux fabric.
+# Copy to ~/.nosy/targets.yaml so queries can use --target <name> instead of
+# repeating address and credentials:
+#
+#   cp demo/targets.yaml ~/.nosy/targets.yaml
+#   nosy query --target spine1 --intent bgp.neighbors
+#
+# admin / NokiaSrl1! are the containerlab SR Linux defaults; insecure: true is
+# TLS-with-skip-verify for the lab's self-signed cert (not plaintext gRPC).
+targets:
+  spine1:
+    address: clab-nosy-demo-spine1
+    username: admin
+    password: NokiaSrl1!
+    insecure: true
+  spine2:
+    address: clab-nosy-demo-spine2
+    username: admin
+    password: NokiaSrl1!
+    insecure: true
+  leaf1:
+    address: clab-nosy-demo-leaf1
+    username: admin
+    password: NokiaSrl1!
+    insecure: true
+  leaf2:
+    address: clab-nosy-demo-leaf2
+    username: admin
+    password: NokiaSrl1!
+    insecure: true

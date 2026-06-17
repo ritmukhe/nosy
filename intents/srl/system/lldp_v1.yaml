@@ -1,0 +1,23 @@
+intent: system.lldp
+nos: srl
+nos_version: ">=23.10"
+aliases:
+  - lldp neighbors
+  - show lldp neighbors
+  - lldp
+  - neighbor discovery
+paths:
+  - /system/lldp/interface[name=*]/neighbor[id=*]
+output:
+  schema_version: 1
+  row_key: "neighbor"
+  # Field names match the SR Linux JSON keys: the local port comes from the
+  # enclosing interface list key ("interface"), and the neighbor's own leaves
+  # are id/system-name/port-id/port-description. SR Linux exposes no TTL on the
+  # neighbor state, so port-description stands in as the final, populated column.
+  fields:
+    - interface
+    - id
+    - system_name
+    - port_id
+    - port_description

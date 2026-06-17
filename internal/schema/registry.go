@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"sort"
 
 	"github.com/ritmukhe/nosy/pkg/schemapack"
 )
@@ -71,6 +72,23 @@ func (r *Registry) Get(nos, version string) (*schemapack.SchemaPack, error) {
 		)
 	}
 	return pack, nil
+}
+
+// Packs returns all loaded schema packs, sorted by "nos/version" key, for
+// listing and resolution. The registry retains ownership of the packs; callers
+// must not mutate them.
+func (r *Registry) Packs() []*schemapack.SchemaPack {
+	keys := make([]string, 0, len(r.packs))
+	for k := range r.packs {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+
+	packs := make([]*schemapack.SchemaPack, 0, len(keys))
+	for _, k := range keys {
+		packs = append(packs, r.packs[k])
+	}
+	return packs
 }
 
 func WithRegistry(ctx context.Context, r *Registry) context.Context {

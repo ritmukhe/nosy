@@ -11,6 +11,7 @@ paths:
   - /network-instance[name=*]/protocols/bgp/neighbor[peer-address=*]
 output:
   schema_version: 1
+  row_key: "neighbor"
   fields:
     - network_instance
     - peer_address

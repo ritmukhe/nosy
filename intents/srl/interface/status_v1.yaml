@@ -1,0 +1,21 @@
+intent: interface.status
+nos: srl
+nos_version: ">=23.10"
+aliases:
+  - interface status
+  - show interfaces
+  - interface state
+  - port status
+  - show ports
+paths:
+  - /interface[name=*]
+output:
+  schema_version: 1
+  row_key: "interface"
+  fields:
+    - name
+    - admin_state
+    - oper_state
+    - description
+    - mtu
+    - speed

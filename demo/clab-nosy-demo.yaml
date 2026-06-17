@@ -1,0 +1,29 @@
+# nosy demo: 2-spine / 2-leaf SR Linux fabric.
+# Container names become clab-nosy-demo-<node>, e.g. clab-nosy-demo-spine1 —
+# use those as --target values for nosy.
+name: nosy-demo
+
+topology:
+  kinds:
+    nokia_srlinux:
+      # Pinned (not :latest) so the firmware version — and thus the schema pack
+      # version nosy needs — is predictable for the demo.
+      image: ghcr.io/nokia/srlinux:24.10.1
+  defaults:
+    kind: nokia_srlinux
+
+  nodes:
+    spine1:
+      startup-config: configs/spine1.cli
+    spine2:
+      startup-config: configs/spine2.cli
+    leaf1:
+      startup-config: configs/leaf1.cli
+    leaf2:
+      startup-config: configs/leaf2.cli
+
+  links:
+    - endpoints: ["spine1:e1-1", "leaf1:e1-1"] # 10.1.1.0/31
+    - endpoints: ["spine1:e1-2", "leaf2:e1-2"] # 10.1.1.2/31
+    - endpoints: ["spine2:e1-1", "leaf1:e1-3"] # 10.1.1.4/31
+    - endpoints: ["spine2:e1-2", "leaf2:e1-4"] # 10.1.1.6/31
